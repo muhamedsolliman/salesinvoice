@@ -1,4 +1,3 @@
-
 package com.sales.model;
 
 import java.util.ArrayList;
@@ -62,5 +61,8 @@ public class Invoice {
         return "Invoice{" + "num=" + num + ", date=" + date + ", customer=" + customer + '}';
     }
     
+    public String getAsCSV() {
+        return num + "," + date + "," + customer;
+    }
     
 }

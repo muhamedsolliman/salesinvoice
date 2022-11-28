@@ -1,4 +1,3 @@
-
 package com.sales.model;
 
 import java.util.ArrayList;
@@ -11,6 +10,10 @@ public class LinesTableModel extends AbstractTableModel {
 
     public LinesTableModel(ArrayList<Line> lines) {
         this.lines = lines;
+    }
+
+    public ArrayList<Line> getLines() {
+        return lines;
     }
     
     
