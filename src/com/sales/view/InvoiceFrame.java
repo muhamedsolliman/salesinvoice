@@ -297,6 +297,10 @@ public class InvoiceFrame extends javax.swing.JFrame {
     public Controller getController() {
         return controller;
     }
+
+    public int getNextInvoiceNum() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
