@@ -1,4 +1,3 @@
-
 package com.sales.view;
 
 import java.awt.GridLayout;
@@ -7,6 +6,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author DELL
+ */
 public class LineDialog extends JDialog{
     private JTextField itemNameField;
     private JTextField itemCountField;

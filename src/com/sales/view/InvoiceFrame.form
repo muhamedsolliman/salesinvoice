@@ -175,6 +175,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create New Invoice"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createInvoiceButtonActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="createInvoiceButton.addActionListener(controller);&#xd;&#xa;"/>
       </AuxValues>

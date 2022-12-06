@@ -1,4 +1,3 @@
-
 package com.sales.model;
 
 import java.util.ArrayList;

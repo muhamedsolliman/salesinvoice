@@ -8,6 +8,7 @@ package com.sales.view;
 import com.sales.controller.Controller;
 import com.sales.model.Invoice;
 import com.sales.model.InvoicesTableModel;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -75,6 +76,11 @@ public class InvoiceFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(invoiceTable);
 
         createInvoiceButton.setText("Create New Invoice");
+        createInvoiceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createInvoiceButtonActionPerformed(evt);
+            }
+        });
 
         deleteInvoiceButton.setText("Delete Invoice");
 
@@ -193,6 +199,10 @@ public class InvoiceFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void createInvoiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createInvoiceButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createInvoiceButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,6 +265,7 @@ public class InvoiceFrame extends javax.swing.JFrame {
     private InvoicesTableModel invoicesTableModel;
 
     public ArrayList<Invoice> getInvoices() {
+        if (invoices == null) invoices = new ArrayList<>();
         return invoices;
     }
 
@@ -263,6 +274,9 @@ public class InvoiceFrame extends javax.swing.JFrame {
     }
 
     public InvoicesTableModel getInvoicesTableModel() {
+        if (invoicesTableModel == null) {
+            invoicesTableModel = new InvoicesTableModel(getInvoices());
+        }
         return invoicesTableModel;
     }
 
@@ -297,9 +311,16 @@ public class InvoiceFrame extends javax.swing.JFrame {
     public Controller getController() {
         return controller;
     }
-
+    
     public int getNextInvoiceNum() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int num = 0;
+        
+        for (Invoice invoice : getInvoices()) {
+            if (invoice.getNum() > num) 
+                num = invoice.getNum();
+        }
+        
+        return ++num;
     }
     
     
