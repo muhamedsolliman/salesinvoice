@@ -1,4 +1,4 @@
-package com.sales.view;
+package view;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -10,7 +10,7 @@ import javax.swing.JTextField;
  *
  * @author DELL
  */
-public class LineDialog extends JDialog{
+public class ItemsDialog extends JDialog{
     private JTextField itemNameField;
     private JTextField itemCountField;
     private JTextField itemPriceField;
@@ -20,7 +20,7 @@ public class LineDialog extends JDialog{
     private JButton okBtn;
     private JButton cancelBtn;
     
-    public LineDialog(InvoiceFrame frame) {
+    public ItemsDialog(InvoiceFrame frame) {
         itemNameField = new JTextField(20);
         itemNameLbl = new JLabel("Item Name");
         

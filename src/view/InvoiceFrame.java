@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sales.view;
+package view;
 
-import com.sales.controller.Controller;
-import com.sales.model.Invoice;
-import com.sales.model.InvoicesTableModel;
+import controller.Controller;
+import model.Invoice;
+import model.InvoicesTable;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -262,7 +262,7 @@ public class InvoiceFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ArrayList<Invoice> invoices;
     private Controller controller = new Controller(this);
-    private InvoicesTableModel invoicesTableModel;
+    private InvoicesTable invoicesTableModel;
 
     public ArrayList<Invoice> getInvoices() {
         if (invoices == null) invoices = new ArrayList<>();
@@ -273,14 +273,14 @@ public class InvoiceFrame extends javax.swing.JFrame {
         this.invoices = invoices;
     }
 
-    public InvoicesTableModel getInvoicesTableModel() {
+    public InvoicesTable getInvoicesTableModel() {
         if (invoicesTableModel == null) {
-            invoicesTableModel = new InvoicesTableModel(getInvoices());
+            invoicesTableModel = new InvoicesTable(getInvoices());
         }
         return invoicesTableModel;
     }
 
-    public void setInvoicesTableModel(InvoicesTableModel invoicesTableModel) {
+    public void setInvoicesTableModel(InvoicesTable invoicesTableModel) {
         this.invoicesTableModel = invoicesTableModel;
     }
 

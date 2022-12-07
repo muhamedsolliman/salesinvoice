@@ -1,35 +1,35 @@
-package com.sales.model;
+package model;
 
 import java.util.ArrayList;
 
 public class Invoice {
-    private int num;
+    private int number;
     private String date;
     private String customer;
-    private ArrayList<Line> lines;
+    private ArrayList<Items> items;
     
     public Invoice() {
     }
 
-    public Invoice(int num, String date, String customer) {
-        this.num = num;
+    public Invoice(int number, String date, String customer) {
+        this.number = number;
         this.date = date;
         this.customer = customer;
     }
 
     public double getInvoiceTotal() {
         double total = 0.0;
-        for (Line line : getLines()) {
+        for (Items line : getLines()) {
             total += line.getLineTotal();
         }
         return total;
     }
     
-    public ArrayList<Line> getLines() {
-        if (lines == null) {
-            lines = new ArrayList<>();
+    public ArrayList<Items> getLines() {
+        if (items == null) {
+            items = new ArrayList<>();
         }
-        return lines;
+        return items;
     }
 
     public String getCustomer() {
@@ -41,11 +41,11 @@ public class Invoice {
     }
 
     public int getNum() {
-        return num;
+        return number;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNum(int number) {
+        this.number = number;
     }
 
     public String getDate() {
@@ -58,11 +58,11 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "Invoice{" + "num=" + num + ", date=" + date + ", customer=" + customer + '}';
+        return "Invoice{" + "number=" + number + ", date=" + date + ", customer=" + customer + '}';
     }
     
     public String getAsCSV() {
-        return num + "," + date + "," + customer;
+        return number + "," + date + "," + customer;
     }
     
 }

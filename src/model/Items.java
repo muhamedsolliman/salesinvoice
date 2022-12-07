@@ -1,15 +1,15 @@
-package com.sales.model;
+package model;
 
-public class Line {
+public class Items {
     private String item;
     private double price;
     private int count;
     private Invoice invoice;
 
-    public Line() {
+    public Items() {
     }
 
-    public Line(String item, double price, int count, Invoice invoice) {
+    public Items(String item, double price, int count, Invoice invoice) {
         this.item = item;
         this.price = price;
         this.count = count;

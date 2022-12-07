@@ -1,12 +1,12 @@
-package com.sales.controller;
+package controller;
 
-import com.sales.model.Invoice;
-import com.sales.model.InvoicesTableModel;
-import com.sales.model.Line;
-import com.sales.model.LinesTableModel;
-import com.sales.view.InvoiceDialog;
-import com.sales.view.InvoiceFrame;
-import com.sales.view.LineDialog;
+import model.Invoice;
+import model.InvoicesTable;
+import model.Items;
+import model.ItemsTable;
+import view.InvoiceDialog;
+import view.InvoiceFrame;
+import view.ItemsDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -30,7 +30,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 
     private InvoiceFrame frame;
     private InvoiceDialog invoiceDialog;
-    private LineDialog lineDialog;
+    private ItemsDialog lineDialog;
 
     public Controller(InvoiceFrame frame) {
         this.frame = frame;
@@ -84,7 +84,7 @@ public class Controller implements ActionListener, ListSelectionListener {
             frame.getInvoiceDateLabel().setText(currentInvoice.getDate());
             frame.getCustomerNameLabel().setText(currentInvoice.getCustomer());
             frame.getInvoiceTotalLabel().setText("" + currentInvoice.getInvoiceTotal());
-            LinesTableModel linesTableModel = new LinesTableModel(currentInvoice.getLines());
+            ItemsTable linesTableModel = new ItemsTable(currentInvoice.getLines());
             frame.getLineTable().setModel(linesTableModel);
             linesTableModel.fireTableDataChanged();
         }
@@ -139,7 +139,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                                 }
                             }
 
-                            Line line = new Line(itemName, itemPrice, count, inv);
+                            Items line = new Items(itemName, itemPrice, count, inv);
                             inv.getLines().add(line);
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -149,7 +149,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                     System.out.println("Check point");
                 }
                 frame.setInvoices(invoicesArray);
-                InvoicesTableModel invoicesTableModel = new InvoicesTableModel(invoicesArray);
+                InvoicesTable invoicesTableModel = new InvoicesTable(invoicesArray);
                 frame.setInvoicesTableModel(invoicesTableModel);
                 frame.getInvoiceTable().setModel(invoicesTableModel);
                 frame.getInvoicesTableModel().fireTableDataChanged();
@@ -169,7 +169,7 @@ public class Controller implements ActionListener, ListSelectionListener {
             headers += invCSV;
             headers += "\n";
 
-            for (Line line : invoice.getLines()) {
+            for (Items line : invoice.getLines()) {
                 String lineCSV = line.getAsCSV();
                 lines += lineCSV;
                 lines += "\n";
@@ -213,7 +213,7 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void createNewItem() {
-        lineDialog = new LineDialog(frame);
+        lineDialog = new ItemsDialog(frame);
         lineDialog.setVisible(true);
     }
 
@@ -221,7 +221,7 @@ public class Controller implements ActionListener, ListSelectionListener {
         int selectedRow = frame.getLineTable().getSelectedRow();
 
         if (selectedRow != -1) {
-            LinesTableModel linesTableModel = (LinesTableModel) frame.getLineTable().getModel();
+            ItemsTable linesTableModel = (ItemsTable) frame.getLineTable().getModel();
             linesTableModel.getLines().remove(selectedRow);
             linesTableModel.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();
@@ -272,9 +272,9 @@ public class Controller implements ActionListener, ListSelectionListener {
         int selectedInvoice = frame.getInvoiceTable().getSelectedRow();
         if (selectedInvoice != -1) {
             Invoice invoice = frame.getInvoices().get(selectedInvoice);
-            Line line = new Line(item, price, count, invoice);
+            Items line = new Items(item, price, count, invoice);
             invoice.getLines().add(line);
-            LinesTableModel linesTableModel = (LinesTableModel) frame.getLineTable().getModel();
+            ItemsTable linesTableModel = (ItemsTable) frame.getLineTable().getModel();
             //linesTableModel.getLines().add(line);
             linesTableModel.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();

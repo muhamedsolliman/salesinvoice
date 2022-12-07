@@ -1,26 +1,26 @@
 
-package com.sales.model;
+package model;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-public class LinesTableModel extends AbstractTableModel {
+public class ItemsTable extends AbstractTableModel {
 
-    private ArrayList<Line> lines;
+    private ArrayList<Items> items;
     private String[] columns = {"No.", "Item Name", "Item Price", "Count", "Item Total"};
 
-    public LinesTableModel(ArrayList<Line> lines) {
-        this.lines = lines;
+    public ItemsTable(ArrayList<Items> items) {
+        this.items = items;
     }
 
-    public ArrayList<Line> getLines() {
-        return lines;
+    public ArrayList<Items> getLines() {
+        return items;
     }
     
     
     @Override
     public int getRowCount() {
-        return lines.size();
+        return items.size();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class LinesTableModel extends AbstractTableModel {
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Line line = lines.get(rowIndex);
+        Items line = items.get(rowIndex);
         
         switch(columnIndex) {
             case 0: return line.getInvoice().getNum();
