@@ -14,10 +14,8 @@
         <group>
             <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/controller/Controller.java</file>
             <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/view/InvoiceDialog.java</file>
-            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/model/Items.java</file>
-            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/model/Invoice.java</file>
-            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/model/InvoicesTable.java</file>
-            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/model/ItemsTable.java</file>
+            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/view/InvoiceFrame.java</file>
+            <file>file:/D:/testing/SalesInvoice/SalesInvoice/src/view/ItemsDialog.java</file>
         </group>
     </open-files>
 </project-private>

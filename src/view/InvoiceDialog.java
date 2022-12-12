@@ -29,8 +29,8 @@ public class InvoiceDialog extends JDialog {
         okBtn.setActionCommand("createInvoiceOK");
         cancelBtn.setActionCommand("createInvoiceCancel");
         
-        okBtn.addActionListener(frame.getController());
-        cancelBtn.addActionListener(frame.getController());
+        okBtn.addActionListener(frame.Controller());
+        cancelBtn.addActionListener(frame.Controller());
         setLayout(new GridLayout(3, 2));
         
         add(invDateLbl);

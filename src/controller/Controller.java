@@ -76,16 +76,16 @@ public class Controller implements ActionListener, ListSelectionListener {
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        int selectedIndex = frame.getInvoiceTable().getSelectedRow();
+        int selectedIndex = frame.InvoiceTable().getSelectedRow();
         if (selectedIndex != -1) {
             System.out.println("You have selected row: " + selectedIndex);
             Invoice currentInvoice = frame.getInvoices().get(selectedIndex);
-            frame.getInvoiceNumLabel().setText("" + currentInvoice.getNum());
-            frame.getInvoiceDateLabel().setText(currentInvoice.getDate());
+            frame.InvoiceNumLabel().setText("" + currentInvoice.getNum());
+            frame.InvoiceDateLabel().setText(currentInvoice.getDate());
             frame.getCustomerNameLabel().setText(currentInvoice.getCustomer());
-            frame.getInvoiceTotalLabel().setText("" + currentInvoice.getInvoiceTotal());
+            frame.InvoiceTotalLabel().setText("" + currentInvoice.getInvoiceTotal());
             ItemsTable linesTableModel = new ItemsTable(currentInvoice.getLines());
-            frame.getLineTable().setModel(linesTableModel);
+            frame.LineTable().setModel(linesTableModel);
             linesTableModel.fireTableDataChanged();
         }
     }
@@ -151,7 +151,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                 frame.setInvoices(invoicesArray);
                 InvoicesTable invoicesTableModel = new InvoicesTable(invoicesArray);
                 frame.setInvoicesTableModel(invoicesTableModel);
-                frame.getInvoiceTable().setModel(invoicesTableModel);
+                frame.InvoiceTable().setModel(invoicesTableModel);
                 frame.getInvoicesTableModel().fireTableDataChanged();
             }
         } catch (IOException ex) {
@@ -205,7 +205,7 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void deleteInvoice() {
-        int selectedRow = frame.getInvoiceTable().getSelectedRow();
+        int selectedRow = frame.InvoiceTable().getSelectedRow();
         if (selectedRow != -1) {
             frame.getInvoices().remove(selectedRow);
             frame.getInvoicesTableModel().fireTableDataChanged();
@@ -218,10 +218,10 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void deleteItem() {
-        int selectedRow = frame.getLineTable().getSelectedRow();
+        int selectedRow = frame.LineTable().getSelectedRow();
 
         if (selectedRow != -1) {
-            ItemsTable linesTableModel = (ItemsTable) frame.getLineTable().getModel();
+            ItemsTable linesTableModel = (ItemsTable) frame.LineTable().getModel();
             linesTableModel.getLines().remove(selectedRow);
             linesTableModel.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();
@@ -237,7 +237,7 @@ public class Controller implements ActionListener, ListSelectionListener {
     private void createInvoiceOK() {
         String date = invoiceDialog.getInvDateField().getText();
         String customer = invoiceDialog.getCustNameField().getText();
-        int num = frame.getNextInvoiceNum();
+        int num = frame.NextInvoiceNum();
         try {
             String[] dateParts = date.split("-");  // "22-05-2013" -> {"22", "05", "2013"}  xy-qw-20ij
             if (dateParts.length < 3) {
@@ -264,17 +264,17 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void createLineOK() {
-        String item = lineDialog.getItemNameField().getText();
-        String countStr = lineDialog.getItemCountField().getText();
-        String priceStr = lineDialog.getItemPriceField().getText();
+        String item = lineDialog.ItemNameField().getText();
+        String countStr = lineDialog.ItemCountField().getText();
+        String priceStr = lineDialog.ItemPriceField().getText();
         int count = Integer.parseInt(countStr);
         double price = Double.parseDouble(priceStr);
-        int selectedInvoice = frame.getInvoiceTable().getSelectedRow();
+        int selectedInvoice = frame.InvoiceTable().getSelectedRow();
         if (selectedInvoice != -1) {
             Invoice invoice = frame.getInvoices().get(selectedInvoice);
             Items line = new Items(item, price, count, invoice);
             invoice.getLines().add(line);
-            ItemsTable linesTableModel = (ItemsTable) frame.getLineTable().getModel();
+            ItemsTable linesTableModel = (ItemsTable) frame.LineTable().getModel();
             //linesTableModel.getLines().add(line);
             linesTableModel.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();

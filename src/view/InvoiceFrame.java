@@ -288,31 +288,31 @@ public class InvoiceFrame extends javax.swing.JFrame {
         return customerNameLabel;
     }
 
-    public JLabel getInvoiceDateLabel() {
+    public JLabel InvoiceDateLabel() {
         return invoiceDateLabel;
     }
 
-    public JLabel getInvoiceNumLabel() {
+    public JLabel InvoiceNumLabel() {
         return invoiceNumLabel;
     }
 
-    public JTable getInvoiceTable() {
+    public JTable InvoiceTable() {
         return invoiceTable;
     }
 
-    public JLabel getInvoiceTotalLabel() {
+    public JLabel InvoiceTotalLabel() {
         return invoiceTotalLabel;
     }
 
-    public JTable getLineTable() {
+    public JTable LineTable() {
         return lineTable;
     }
 
-    public Controller getController() {
+    public Controller Controller() {
         return controller;
     }
     
-    public int getNextInvoiceNum() {
+    public int NextInvoiceNum() {
         int num = 0;
         
         for (Invoice invoice : getInvoices()) {

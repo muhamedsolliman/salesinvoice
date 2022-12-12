@@ -36,8 +36,8 @@ public class ItemsDialog extends JDialog{
         okBtn.setActionCommand("createLineOK");
         cancelBtn.setActionCommand("createLineCancel");
         
-        okBtn.addActionListener(frame.getController());
-        cancelBtn.addActionListener(frame.getController());
+        okBtn.addActionListener(frame.Controller());
+        cancelBtn.addActionListener(frame.Controller());
         setLayout(new GridLayout(4, 2));
         
         add(itemNameLbl);
@@ -52,15 +52,15 @@ public class ItemsDialog extends JDialog{
         pack();
     }
 
-    public JTextField getItemNameField() {
+    public JTextField ItemNameField() {
         return itemNameField;
     }
 
-    public JTextField getItemCountField() {
+    public JTextField ItemCountField() {
         return itemCountField;
     }
 
-    public JTextField getItemPriceField() {
+    public JTextField ItemPriceField() {
         return itemPriceField;
     }
 }
